@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3ex6cnoi4jt4"]
 
-[ext_resource type="PackedScene" uid="uid://b4x85po46th5r" path="res://astronot/astronot.tscn" id="1_7ifm7"]
-[ext_resource type="Texture2D" uid="uid://csab5fb452a4q" path="res://assets/asteroids/tile000.png" id="2_lkp0q"]
+[ext_resource type="PackedScene" uid="uid://b4x85po46th5r" path="res://astronot/astronot.tscn" id="1_q3rlf"]
+[ext_resource type="Texture2D" uid="uid://csab5fb452a4q" path="res://assets/asteroids/tile000.png" id="2_ml4x7"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Astronot" parent="." instance=ExtResource("1_7ifm7")]
+[node name="Astronot" parent="." instance=ExtResource("1_q3rlf")]
 position = Vector2(458, 355)
 
 [node name="Camera2D" type="Camera2D" parent="Astronot"]
@@ -14,16 +14,16 @@ position_smoothing_enabled = true
 [node name="Tile000" type="Sprite2D" parent="."]
 position = Vector2(262, 587)
 scale = Vector2(6.1875, 6.1875)
-texture = ExtResource("2_lkp0q")
+texture = ExtResource("2_ml4x7")
 
 [node name="Tile001" type="Sprite2D" parent="."]
 position = Vector2(854, 387)
 rotation = -1.29004
 scale = Vector2(6.1875, 6.1875)
-texture = ExtResource("2_lkp0q")
+texture = ExtResource("2_ml4x7")
 
 [node name="Tile002" type="Sprite2D" parent="."]
 position = Vector2(180, 168)
 rotation = -1.29004
 scale = Vector2(6.1875, 6.1875)
-texture = ExtResource("2_lkp0q")
+texture = ExtResource("2_ml4x7")
