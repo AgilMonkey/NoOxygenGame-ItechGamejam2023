@@ -9,6 +9,8 @@ radius = 15.0
 height = 72.0
 
 [node name="Astronot" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 5
 physics_material_override = ExtResource("1_05pj7")
 gravity_scale = 0.0
 script = ExtResource("2_e6crm")

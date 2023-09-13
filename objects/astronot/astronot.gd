@@ -1,5 +1,9 @@
 extends RigidBody2D
 
+# Stat var
+var health := 10
+
+# Movement var
 var speed := 300.0
 var max_speed := 400.0
 var rot_speed := 200
@@ -9,12 +13,6 @@ var _input_dir := Vector2.ZERO
 var _rot_dir := 0
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	# Input
 	_input_dir.y = Input.get_action_raw_strength("move_back") - Input.get_action_raw_strength("move_forward")

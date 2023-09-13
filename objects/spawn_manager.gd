@@ -15,10 +15,7 @@ var SCREEN_H = ProjectSettings.get_setting("display/window/size/viewport_height"
 
 func _ready() -> void:
 	spawn_asteroid_with_offset(start_spawn_area, start_spawn_offs_area, start_spawn_count)
-
-#func _process(delta: float) -> void:
-#	if Input.is_key_label_pressed(KEY_Q):
-#		spawn_asteroid_with_offset(Vector4(0, 0, 1000, 1000), Vector4(200, 200, 500, 500), 1)
+	
 
 func spawn_asteroid_with_offset(area: Vector4, off_area: Vector4, count: int):
 	for i in count:
