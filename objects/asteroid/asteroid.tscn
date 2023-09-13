@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://csab5fb452a4q" path="res://assets/asteroids/tile000.png" id="1_dnr0v"]
 
 [node name="Asteroid" type="RigidBody2D"]
-mass = 5.0
+mass = 100.0
 gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -5,18 +5,25 @@ extends Node2D
 
 @export var asteroids : Array[PackedScene]
 
+var _position_been : Array[Vector2]
+
 var SCREEN_W = ProjectSettings.get_setting("display/window/size/viewport_width")
 var SCREEN_H = ProjectSettings.get_setting("display/window/size/viewport_height")
 
 func _ready() -> void:
-	spawn_asteroid_in_area(Vector4(0, 0, 2000, 2000), 20)
+	spawn_asteroid_in_area(Vector4(0, 0, 2000, 2000), 50)
 
 
 func spawn_asteroid_in_area(area: Vector4, count: int):
 	for i in count:
-		var rand_x = (randi_range(area.x, area.z) / offset) * offset
-		var rand_y = (randi_range(area.y, area.w) / offset) * offset
+		var rand_x; var rand_y
+		for r in 10:
+			rand_x = (randi_range(area.x, area.z) / offset) * offset
+			rand_y = (randi_range(area.y, area.w) / offset) * offset
+			if not Vector2(rand_x, rand_y) in _position_been:
+				break
 		
+		_position_been.append(Vector2(rand_x, rand_y))
 		spawn_random_asteroid(Vector2(rand_x, rand_y))
 
 

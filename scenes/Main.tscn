@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3ex6cnoi4jt4"]
 
 [ext_resource type="Script" path="res://objects/spawn_manager.gd" id="1_d0t83"]
-[ext_resource type="PackedScene" uid="uid://b4x85po46th5r" path="res://objects/astronot/astronot.tscn" id="1_q3rlf"]
 [ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://objects/asteroid/asteroid.tscn" id="2_doyi7"]
+[ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://objects/astronot/astronot-2.tscn" id="3_5ol35"]
 
 [node name="Main" type="Node2D"]
 
@@ -10,8 +10,8 @@
 script = ExtResource("1_d0t83")
 asteroids = Array[PackedScene]([ExtResource("2_doyi7")])
 
-[node name="Astronot" parent="." instance=ExtResource("1_q3rlf")]
-position = Vector2(458, 355)
+[node name="Astronot" parent="." instance=ExtResource("3_5ol35")]
+position = Vector2(446, 353)
 
 [node name="Camera2D" type="Camera2D" parent="Astronot"]
 position_smoothing_enabled = true
