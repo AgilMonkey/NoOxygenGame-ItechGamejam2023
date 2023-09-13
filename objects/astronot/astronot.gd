@@ -29,10 +29,6 @@ func _physics_process(delta: float) -> void:
 		apply_force(Vector2(0, _input_dir.y * speed).rotated(rotation))
 	else:
 		apply_force(Vector2.ZERO)
-#	if _rot_dir != 0:
-#		apply_torque(_rot_dir * rot_speed)
-#	else:
-#		apply_torque(0)
+
 	linear_velocity = linear_velocity.limit_length(max_speed)
-#	angular_velocity = clamp(angular_velocity, -2000, 2000)
 	angular_velocity = _rot_dir * rot_speed * delta

@@ -1,18 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4x85po46th5r"]
+[gd_scene load_steps=5 format=3 uid="uid://uou4ssvxdcly"]
 
-[ext_resource type="Script" path="res://objects/astronot/astronot_movement.gd" id="1_s38qi"]
-[ext_resource type="Texture2D" uid="uid://cfli7gnceuyco" path="res://assets/astronout.png" id="2_6mmjl"]
+[ext_resource type="PhysicsMaterial" uid="uid://d1hwypfyjyu46" path="res://objects/astronot/astronot-physic.tres" id="1_05pj7"]
+[ext_resource type="Script" path="res://objects/astronot/astronot.gd" id="2_e6crm"]
+[ext_resource type="Texture2D" uid="uid://cfli7gnceuyco" path="res://assets/astronout.png" id="2_x5xdk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_evu6n"]
 radius = 15.0
 height = 72.0
 
-[node name="Astronot" type="CharacterBody2D"]
-script = ExtResource("1_s38qi")
+[node name="Astronot" type="RigidBody2D"]
+physics_material_override = ExtResource("1_05pj7")
+gravity_scale = 0.0
+script = ExtResource("2_e6crm")
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
-texture = ExtResource("2_6mmjl")
+texture = ExtResource("2_x5xdk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_evu6n")

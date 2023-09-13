@@ -11,7 +11,27 @@ var SCREEN_W = ProjectSettings.get_setting("display/window/size/viewport_width")
 var SCREEN_H = ProjectSettings.get_setting("display/window/size/viewport_height")
 
 func _ready() -> void:
-	spawn_asteroid_in_area(Vector4(0, 0, 2000, 2000), 50)
+	print(get_random_without_off(Vector4(0, 0, 3, 3), Vector4(1, 1, 1, 1)))
+#	spawn_asteroid_in_area(Vector4(0, 0, 2000, 2000), 50)
+
+
+#func spawn_asteroid_with_offset(off_area: Vector4, area: Vector4, count: int):
+#	for i in count:
+#
+#
+
+
+func get_random_without_off(area: Vector4, off_area: Vector4) -> Vector2:
+	var x_off_count = off_area.z - off_area.x
+	var y_off_count = off_area.w - off_area.y
+	var rand_x = randi_range(area.x, x_off_count)
+	var rand_y = randi_range(area.y, y_off_count)
+	if rand_x >= off_area.x:
+		rand_x += x_off_count
+	if rand_y >= off_area.y:
+		rand_y += y_off_count
+	
+	return Vector2(rand_x, rand_y)
 
 
 func spawn_asteroid_in_area(area: Vector4, count: int):

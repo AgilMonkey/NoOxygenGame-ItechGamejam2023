@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://objects/spawn_manager.gd" id="1_d0t83"]
 [ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://objects/asteroid/asteroid.tscn" id="2_doyi7"]
-[ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://objects/astronot/astronot-2.tscn" id="3_5ol35"]
+[ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://objects/astronot/astronot.tscn" id="3_5ol35"]
 
 [node name="Main" type="Node2D"]
 
