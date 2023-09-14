@@ -12,7 +12,7 @@
 
 [node name="SpawnManager" type="Node2D" parent="."]
 script = ExtResource("1_d0t83")
-start_spawn_count = 50
+asteroid_spawn_count = 70
 asteroids = Array[PackedScene]([ExtResource("2_doyi7")])
 
 [node name="Astronot" parent="." instance=ExtResource("3_5ol35")]
@@ -24,10 +24,11 @@ position_smoothing_enabled = true
 [node name="SpawnAround" type="Node2D" parent="Astronot"]
 script = ExtResource("4_dmxju")
 range_spawn = 2200
+asteroid_spawn_count = 12
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="UI"]
+[node name="GameUI" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthUI" type="Label" parent="UI/Control"]
+[node name="HealthUI" type="Label" parent="UI/GameUI"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -49,7 +50,7 @@ theme_override_font_sizes/font_size = 50
 text = "Health: 10"
 script = ExtResource("5_n3ltv")
 
-[node name="OxygenUI" type="Label" parent="UI/Control"]
+[node name="OxygenUI" type="Label" parent="UI/GameUI"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -64,7 +65,10 @@ text = "Oxygen: 200"
 script = ExtResource("6_ak3ph")
 
 [node name="OxygenTank" parent="." instance=ExtResource("7_0lmgl")]
-position = Vector2(753, 374)
+position = Vector2(948, 502)
 
-[connection signal="on_health_changed" from="Astronot" to="UI/Control/HealthUI" method="_on_astronot_on_health_changed"]
-[connection signal="on_oxygen_changed" from="Astronot" to="UI/Control/OxygenUI" method="_on_astronot_on_oxygen_changed"]
+[node name="OxygenTank2" parent="." instance=ExtResource("7_0lmgl")]
+position = Vector2(120, 443)
+
+[connection signal="on_health_changed" from="Astronot" to="UI/GameUI/HealthUI" method="_on_astronot_on_health_changed"]
+[connection signal="on_oxygen_changed" from="Astronot" to="UI/GameUI/OxygenUI" method="_on_astronot_on_oxygen_changed"]

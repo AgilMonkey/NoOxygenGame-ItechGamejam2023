@@ -4,6 +4,8 @@ extends RigidBody2D
 var health := 10
 var oxygen := 200
 
+@export var oxygen_replenish := 65
+
 # Movement var
 var speed := 300.0
 var max_speed := 400.0
@@ -56,7 +58,7 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("damaging"):
 		damage(1)
 	if body.is_in_group("oxygen"):
-		reduce_oxygen(-50)
+		reduce_oxygen(-oxygen_replenish)
 		body.queue_free()
 
 
