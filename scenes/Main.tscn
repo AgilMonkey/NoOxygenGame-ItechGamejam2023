@@ -10,6 +10,7 @@
 
 [node name="SpawnManager" type="Node2D" parent="."]
 script = ExtResource("1_d0t83")
+start_spawn_count = 50
 asteroids = Array[PackedScene]([ExtResource("2_doyi7")])
 
 [node name="Astronot" parent="." instance=ExtResource("3_5ol35")]
@@ -20,10 +21,11 @@ position_smoothing_enabled = true
 
 [node name="SpawnAround" type="Node2D" parent="Astronot"]
 script = ExtResource("4_dmxju")
+range_spawn = 2200
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthUI" type="Label" parent="CanvasLayer/Control"]
+[node name="HealthUI" type="Label" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -45,4 +47,4 @@ theme_override_font_sizes/font_size = 50
 text = "Health: 10"
 script = ExtResource("5_n3ltv")
 
-[connection signal="on_health_changed" from="Astronot" to="CanvasLayer/Control/HealthUI" method="_on_astronot_on_health_changed"]
+[connection signal="on_health_changed" from="Astronot" to="UI/Control/HealthUI" method="_on_astronot_on_health_changed"]

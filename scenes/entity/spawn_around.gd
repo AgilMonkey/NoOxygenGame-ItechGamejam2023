@@ -24,10 +24,18 @@ func spawn():
 
 
 func spawn_randomly_in_circle_ring(radius: float) -> void:
-	var rand_rot = randf_range(0, 360)
-	var rand_pos : Vector2 = Vector2.from_angle(deg_to_rad(rand_rot)) * range_spawn
+	var rand_rot = randi_with_step(0, 360, 15)
+	var rand_pos : Vector2 = Vector2.from_angle(deg_to_rad(rand_rot)) * radius
 	
 	spawn_asteroid(rand_pos + global_position)
+
+
+## Tolong jangan nganu step <= 0
+func randi_with_step(from: int, to: int, step: int = 1) -> int:
+	var from_to_mag = to - from
+	var rand_num = randi() % from_to_mag / step
+	
+	return rand_num * step
 
 
 func spawn_asteroid(pos : Vector2 = Vector2.ZERO):
