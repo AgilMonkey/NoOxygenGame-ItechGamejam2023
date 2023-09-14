@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3ex6cnoi4jt4"]
+[gd_scene load_steps=6 format=3 uid="uid://c3ex6cnoi4jt4"]
 
 [ext_resource type="Script" path="res://objects/spawn_manager.gd" id="1_d0t83"]
 [ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://objects/asteroid/asteroid.tscn" id="2_doyi7"]
 [ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://objects/astronot/astronot.tscn" id="3_5ol35"]
 [ext_resource type="Script" path="res://objects/spawn_around.gd" id="4_dmxju"]
+[ext_resource type="Script" path="res://objects/health_ui.gd" id="5_n3ltv"]
 
 [node name="Main" type="Node2D"]
 
@@ -20,5 +21,28 @@ position_smoothing_enabled = true
 [node name="SpawnAround" type="Node2D" parent="Astronot"]
 script = ExtResource("4_dmxju")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(646, 517)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthUI" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -92.0
+offset_right = 267.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Health: 10"
+script = ExtResource("5_n3ltv")
+
+[connection signal="on_health_changed" from="Astronot" to="CanvasLayer/Control/HealthUI" method="_on_astronot_on_health_changed"]

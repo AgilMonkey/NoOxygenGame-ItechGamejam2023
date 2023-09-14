@@ -13,6 +13,8 @@ collision_layer = 2
 collision_mask = 5
 physics_material_override = ExtResource("1_05pj7")
 gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
 script = ExtResource("2_e6crm")
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -21,3 +23,5 @@ texture = ExtResource("2_x5xdk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_evu6n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

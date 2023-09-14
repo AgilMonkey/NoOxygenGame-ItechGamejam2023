@@ -12,6 +12,12 @@ var max_torq := 2000.0
 var _input_dir := Vector2.ZERO
 var _rot_dir := 0
 
+signal on_health_changed(cur_health: int)
+
+
+func _ready() -> void:
+	on_health_changed.emit(health) # Dianu biar ui berubah
+
 
 func _physics_process(delta: float) -> void:
 	# Input
@@ -30,3 +36,14 @@ func _physics_process(delta: float) -> void:
 
 	linear_velocity = linear_velocity.limit_length(max_speed)
 	angular_velocity = _rot_dir * rot_speed * delta
+
+
+func damage(amount: int):
+	health -= amount
+	health = clamp(health, 0, INF)
+	on_health_changed.emit(health)
+
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("damaging"):
+		damage(1)
