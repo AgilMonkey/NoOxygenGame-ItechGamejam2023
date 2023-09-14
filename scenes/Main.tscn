@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3ex6cnoi4jt4"]
+[gd_scene load_steps=8 format=3 uid="uid://c3ex6cnoi4jt4"]
 
 [ext_resource type="Script" path="res://scenes/entity/spawn_manager.gd" id="1_d0t83"]
 [ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://scenes/entity/asteroid/asteroid.tscn" id="2_doyi7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/entity/spawn_around.gd" id="4_dmxju"]
 [ext_resource type="Script" path="res://scenes/ui/health_ui.gd" id="5_n3ltv"]
 [ext_resource type="Script" path="res://scenes/ui/OxygenUI.gd" id="6_ak3ph"]
+[ext_resource type="PackedScene" uid="uid://c0qgguxhpl3lw" path="res://scenes/entity/oxygen/oxygen_tank.tscn" id="7_0lmgl"]
 
 [node name="Main" type="Node2D"]
 
@@ -61,6 +62,9 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "Oxygen: 200"
 script = ExtResource("6_ak3ph")
+
+[node name="OxygenTank" parent="." instance=ExtResource("7_0lmgl")]
+position = Vector2(753, 374)
 
 [connection signal="on_health_changed" from="Astronot" to="UI/Control/HealthUI" method="_on_astronot_on_health_changed"]
 [connection signal="on_oxygen_changed" from="Astronot" to="UI/Control/OxygenUI" method="_on_astronot_on_oxygen_changed"]

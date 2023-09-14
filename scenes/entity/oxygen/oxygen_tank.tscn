@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0qgguxhpl3lw"]
+
+[ext_resource type="Texture2D" uid="uid://bntt15tcx1blm" path="res://assets/oxygen-tank-prototype.png" id="1_wo1yr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ejbt"]
+radius = 37.0
+height = 92.0
+
+[node name="OxygenTank" type="RigidBody2D" groups=["oxygen"]]
+collision_layer = 5
+collision_mask = 7
+mass = 0.1
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, 4)
+texture = ExtResource("1_wo1yr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -3)
+shape = SubResource("CapsuleShape2D_1ejbt")

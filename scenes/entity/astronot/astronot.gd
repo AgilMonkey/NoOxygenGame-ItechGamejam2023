@@ -42,19 +42,22 @@ func _physics_process(delta: float) -> void:
 
 func damage(amount: int):
 	health -= amount
-	health = clamp(health, 0, INF)
+	health = clamp(health, 0, 10)
 	on_health_changed.emit(health)
 
 
 func reduce_oxygen(amount: int):
 	oxygen -= amount
-	oxygen = clamp(oxygen, 0, INF)
+	oxygen = clamp(oxygen, 0, 200)
 	on_oxygen_changed.emit(oxygen)
 
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("damaging"):
 		damage(1)
+	if body.is_in_group("oxygen"):
+		reduce_oxygen(-50)
+		body.queue_free()
 
 
 func _on_oxygen_timer_timeout() -> void:
