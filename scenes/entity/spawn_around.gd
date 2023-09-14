@@ -14,6 +14,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var cur_pos_len = global_position - _last_pos
 	if cur_pos_len.length() > spawn_until:
+		print("Spawn")
 		spawn()
 		_last_pos = global_position
 

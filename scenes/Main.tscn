@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3ex6cnoi4jt4"]
+[gd_scene load_steps=7 format=3 uid="uid://c3ex6cnoi4jt4"]
 
 [ext_resource type="Script" path="res://scenes/entity/spawn_manager.gd" id="1_d0t83"]
 [ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://scenes/entity/asteroid/asteroid.tscn" id="2_doyi7"]
 [ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://scenes/entity/astronot/astronot.tscn" id="3_5ol35"]
 [ext_resource type="Script" path="res://scenes/entity/spawn_around.gd" id="4_dmxju"]
 [ext_resource type="Script" path="res://scenes/ui/health_ui.gd" id="5_n3ltv"]
+[ext_resource type="Script" path="res://scenes/ui/OxygenUI.gd" id="6_ak3ph"]
 
 [node name="Main" type="Node2D"]
 
@@ -39,12 +40,27 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = -92.0
+offset_top = -180.0
 offset_right = 267.0
-offset_bottom = -20.0
+offset_bottom = -108.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "Health: 10"
 script = ExtResource("5_n3ltv")
 
+[node name="OxygenUI" type="Label" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -113.0
+offset_right = 267.0
+offset_bottom = -41.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Oxygen: 200"
+script = ExtResource("6_ak3ph")
+
 [connection signal="on_health_changed" from="Astronot" to="UI/Control/HealthUI" method="_on_astronot_on_health_changed"]
+[connection signal="on_oxygen_changed" from="Astronot" to="UI/Control/OxygenUI" method="_on_astronot_on_oxygen_changed"]

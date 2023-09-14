@@ -24,4 +24,13 @@ texture = ExtResource("2_x5xdk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_evu6n")
 
+[node name="OxygenTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="OutOfOxygenTimer" type="Timer" parent="."]
+wait_time = 4.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="OxygenTimer" to="." method="_on_oxygen_timer_timeout"]
+[connection signal="timeout" from="OutOfOxygenTimer" to="." method="_on_out_of_oxygen_timer_timeout"]

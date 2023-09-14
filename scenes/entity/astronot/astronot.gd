@@ -2,6 +2,7 @@ extends RigidBody2D
 
 # Stat var
 var health := 10
+var oxygen := 200
 
 # Movement var
 var speed := 300.0
@@ -13,6 +14,7 @@ var _input_dir := Vector2.ZERO
 var _rot_dir := 0
 
 signal on_health_changed(cur_health: int)
+signal on_oxygen_changed(cur_oxygen: int)
 
 
 func _ready() -> void:
@@ -44,6 +46,24 @@ func damage(amount: int):
 	on_health_changed.emit(health)
 
 
+func reduce_oxygen(amount: int):
+	oxygen -= amount
+	oxygen = clamp(oxygen, 0, INF)
+	on_oxygen_changed.emit(oxygen)
+
+
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("damaging"):
+		damage(1)
+
+
+func _on_oxygen_timer_timeout() -> void:
+	if oxygen <= 0:
+		if $OutOfOxygenTimer.is_stopped():
+			$OutOfOxygenTimer.start()
+	reduce_oxygen(1)
+
+
+func _on_out_of_oxygen_timer_timeout() -> void:
+	if oxygen <= 0:
 		damage(1)
