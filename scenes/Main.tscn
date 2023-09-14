@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3ex6cnoi4jt4"]
 
-[ext_resource type="Script" path="res://objects/spawn_manager.gd" id="1_d0t83"]
-[ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://objects/asteroid/asteroid.tscn" id="2_doyi7"]
-[ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://objects/astronot/astronot.tscn" id="3_5ol35"]
-[ext_resource type="Script" path="res://objects/spawn_around.gd" id="4_dmxju"]
-[ext_resource type="Script" path="res://objects/health_ui.gd" id="5_n3ltv"]
+[ext_resource type="Script" path="res://scenes/entity/spawn_manager.gd" id="1_d0t83"]
+[ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://scenes/entity/asteroid/asteroid.tscn" id="2_doyi7"]
+[ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://scenes/entity/astronot/astronot.tscn" id="3_5ol35"]
+[ext_resource type="Script" path="res://scenes/entity/spawn_around.gd" id="4_dmxju"]
+[ext_resource type="Script" path="res://scenes/ui/health_ui.gd" id="5_n3ltv"]
 
 [node name="Main" type="Node2D"]
 

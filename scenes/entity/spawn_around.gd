@@ -5,7 +5,7 @@ extends Node2D
 @export_range(0, 1000, 1, "suffix:px") var spawn_until = 300
 var _last_pos : Vector2
 
-var asteroid : PackedScene = preload("res://objects/asteroid/asteroid.tscn")
+var asteroid : PackedScene = preload("res://scenes/entity/asteroid/asteroid.tscn")
 
 
 func _ready() -> void:

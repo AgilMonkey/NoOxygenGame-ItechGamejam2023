@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://uou4ssvxdcly"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://d1hwypfyjyu46" path="res://objects/astronot/astronot-physic.tres" id="1_05pj7"]
-[ext_resource type="Script" path="res://objects/astronot/astronot.gd" id="2_e6crm"]
+[ext_resource type="PhysicsMaterial" uid="uid://d1hwypfyjyu46" path="res://scenes/entity/astronot/astronot-physic.tres" id="1_05pj7"]
+[ext_resource type="Script" path="res://scenes/entity/astronot/astronot.gd" id="2_e6crm"]
 [ext_resource type="Texture2D" uid="uid://cfli7gnceuyco" path="res://assets/astronout.png" id="2_x5xdk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_evu6n"]
