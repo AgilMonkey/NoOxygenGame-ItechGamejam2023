@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0ex5i5l2o24g"]
+
+[ext_resource type="Texture2D" uid="uid://c0rsaptyqg6jo" path="res://assets/asteroids/tile008.png" id="1_lqee7"]
+
+[node name="Asteroid5" type="RigidBody2D" groups=["damaging"]]
+collision_layer = 5
+mass = 100.0
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(-4, -9)
+scale = Vector2(10, 10)
+texture = ExtResource("1_lqee7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_index = 100
+polygon = PackedVector2Array(-1, -104, -39, -79, -69, -12, -88, 9, -50, 61, 3, 60, 32, 32, 66, -27, 51, -48)

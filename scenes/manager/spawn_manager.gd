@@ -88,3 +88,7 @@ func spawn_something_with_random_prop(obj: PackedScene, pos: Vector2 = Vector2.Z
 	instance.position = pos
 	instance.rotation = randi_range(0, 360)
 	add_child(instance)
+
+
+func _on_astronot_on_death() -> void:
+	print("HEHE HAHA")

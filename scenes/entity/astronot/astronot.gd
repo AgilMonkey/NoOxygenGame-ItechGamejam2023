@@ -1,10 +1,10 @@
 extends RigidBody2D
 
 # Stat var
-var health := 10
-var oxygen := 200
+@export var health := 10
+@export var oxygen := 200
 
-@export var oxygen_replenish := 65
+@export var oxygen_replenish := 50
 
 # Movement var
 var speed := 300.0
@@ -15,22 +15,35 @@ var max_torq := 2000.0
 var _input_dir := Vector2.ZERO
 var _rot_dir := 0
 
+# Others
+var is_death := false
+
 signal on_health_changed(cur_health: int)
 signal on_oxygen_changed(cur_oxygen: int)
+signal on_death
+
+@onready var hurt_timer := $HurtTimer
 
 
 func _ready() -> void:
 	on_health_changed.emit(health) # Dianu biar ui berubah
 
 
-func _physics_process(delta: float) -> void:
-	# Input
+func _process(delta: float) -> void:
+	# Buat hal-hal yang tidak melibatkan physic
+	if health <= 0 and not is_death:
+		_death()
+
+
+func _input(event: InputEvent) -> void:
 	_input_dir.y = Input.get_action_raw_strength("move_back") - Input.get_action_raw_strength("move_forward")
 	_rot_dir = 0
 	if Input.is_action_pressed("move_right"):
 		_rot_dir += 1
 	if Input.is_action_pressed("move_left"):
 		_rot_dir -= 1
+
+func _physics_process(delta: float) -> void:
 
 	# Physics
 	if _input_dir.length_squared() > 0:
@@ -43,15 +56,26 @@ func _physics_process(delta: float) -> void:
 
 
 func damage(amount: int):
+	if not hurt_timer.is_stopped():
+		return
 	health -= amount
 	health = clamp(health, 0, 10)
 	on_health_changed.emit(health)
+	hurt_timer.start()
 
 
 func reduce_oxygen(amount: int):
 	oxygen -= amount
 	oxygen = clamp(oxygen, 0, 200)
 	on_oxygen_changed.emit(oxygen)
+
+
+func _death():
+	is_death = true
+	_input_dir = Vector2.ZERO
+	_rot_dir = 0
+	set_process_input(false)
+	on_death.emit()
 
 
 func _on_body_entered(body: Node) -> void:

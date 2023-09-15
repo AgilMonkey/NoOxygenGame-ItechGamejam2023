@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccpbr6cqbw8pv"]
+
+[ext_resource type="Script" path="res://scenes/manager/game_manager.gd" id="1_rc0qq"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_rc0qq")
+
+[node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

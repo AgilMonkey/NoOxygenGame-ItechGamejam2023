@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ypipf57o2bjx"]
+
+[ext_resource type="Script" path="res://scenes/manager/spawn_manager.gd" id="1_frbrb"]
+[ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://scenes/entity/asteroid/asteroid.tscn" id="2_gv0y7"]
+
+[node name="SpawnManager" type="Node2D"]
+script = ExtResource("1_frbrb")
+asteroid_spawn_count = 70
+asteroids = Array[PackedScene]([ExtResource("2_gv0y7")])
