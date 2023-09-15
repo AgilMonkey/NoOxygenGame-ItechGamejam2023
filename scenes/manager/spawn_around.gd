@@ -28,7 +28,7 @@ func spawn():
 
 
 func spawn_randomly_in_circle_ring(obj: PackedScene, radius: float) -> void:
-	var rand_rot = randi_with_step(0, 360, 15)
+	var rand_rot = randi_with_step(0, 360, 5)
 	var rand_pos : Vector2 = Vector2.from_angle(deg_to_rad(rand_rot)) * radius
 	
 	spawn_something_with_random_prop(obj, rand_pos + global_position)
