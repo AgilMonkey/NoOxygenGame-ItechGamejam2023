@@ -61,6 +61,8 @@ position = Vector2(871, 470)
 rotation = -0.927385
 
 [connection signal="on_score_changed" from="GameManager" to="UI/GameUI" method="_on_game_manager_on_score_changed"]
+[connection signal="on_score_changed" from="GameManager" to="UI/GameoverUI" method="_on_game_manager_on_score_changed"]
+[connection signal="on_death" from="Astronot" to="GameManager" method="on_gameover"]
 [connection signal="on_death" from="Astronot" to="UI/GameUI" method="_on_astronot_on_death"]
 [connection signal="on_death" from="Astronot" to="UI/GameoverUI" method="_on_astronot_on_death"]
 [connection signal="on_health_changed" from="Astronot" to="UI/GameUI" method="_on_astronot_on_health_changed"]
