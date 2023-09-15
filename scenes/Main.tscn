@@ -46,10 +46,8 @@ shape = SubResource("CircleShape2D_0xu32")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="OxygenTank" parent="." instance=ExtResource("7_0lmgl")]
-position = Vector2(948, 502)
-
-[node name="OxygenTank2" parent="." instance=ExtResource("7_0lmgl")]
-position = Vector2(120, 443)
+position = Vector2(871, 470)
+rotation = -0.927385
 
 [connection signal="on_death" from="Astronot" to="UI/GameUI" method="_on_astronot_on_death"]
 [connection signal="on_death" from="Astronot" to="UI/GameoverUI" method="_on_astronot_on_death"]
