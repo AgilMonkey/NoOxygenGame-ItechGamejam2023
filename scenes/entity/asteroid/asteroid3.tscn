@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ik0vrpiq0wx1"]
+
+[ext_resource type="Texture2D" uid="uid://bunw3l3icnbfs" path="res://assets/asteroids/tile003.png" id="1_cilml"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8b36p"]
+radius = 37.0135
+
+[node name="Asteroid3" type="RigidBody2D" groups=["damaging"]]
+collision_layer = 5
+mass = 100.0
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(-4, -9)
+scale = Vector2(10, 10)
+texture = ExtResource("1_cilml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 100
+shape = SubResource("CircleShape2D_8b36p")

@@ -1,13 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3ex6cnoi4jt4"]
+[gd_scene load_steps=16 format=3 uid="uid://c3ex6cnoi4jt4"]
 
 [ext_resource type="PackedScene" uid="uid://ypipf57o2bjx" path="res://scenes/manager/spawn_manager.tscn" id="1_73e2h"]
+[ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://scenes/entity/asteroid/asteroid.tscn" id="2_njqro"]
+[ext_resource type="PackedScene" uid="uid://dcbqsyecyve4g" path="res://scenes/entity/asteroid/asteroid1.tscn" id="3_4mqrj"]
 [ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://scenes/entity/astronot/astronot.tscn" id="3_5ol35"]
 [ext_resource type="Script" path="res://scenes/manager/spawn_around.gd" id="3_km3i2"]
+[ext_resource type="PackedScene" uid="uid://c23276uhylacb" path="res://scenes/entity/asteroid/asteroid2.tscn" id="4_78s2b"]
 [ext_resource type="PackedScene" uid="uid://bht8h3lcjv700" path="res://scenes/ui/game-ui/gameover-ui/GameoverUI.tscn" id="4_iytu8"]
 [ext_resource type="Script" path="res://scenes/manager/DeleteObjectBound.gd" id="4_olaxs"]
 [ext_resource type="PackedScene" uid="uid://d0bu6m3ljp4i3" path="res://scenes/ui/game-ui/game_ui.tscn" id="5_0aigo"]
 [ext_resource type="PackedScene" uid="uid://bdt5qlrcrt77s" path="res://scenes/ui/ui.tscn" id="5_0ek2r"]
+[ext_resource type="PackedScene" uid="uid://ik0vrpiq0wx1" path="res://scenes/entity/asteroid/asteroid3.tscn" id="5_ymvbw"]
+[ext_resource type="PackedScene" uid="uid://d1kg5dnsvwgxa" path="res://scenes/entity/asteroid/asteroid4.tscn" id="6_k7aw5"]
 [ext_resource type="PackedScene" uid="uid://c0qgguxhpl3lw" path="res://scenes/entity/oxygen/oxygen_tank.tscn" id="7_0lmgl"]
+[ext_resource type="PackedScene" uid="uid://d0ex5i5l2o24g" path="res://scenes/entity/asteroid/asteroid5.tscn" id="7_exby2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0xu32"]
 radius = 2300.0
@@ -15,6 +21,7 @@ radius = 2300.0
 [node name="Main" type="Node2D"]
 
 [node name="SpawnManager" parent="." instance=ExtResource("1_73e2h")]
+asteroids = Array[PackedScene]([ExtResource("2_njqro"), ExtResource("3_4mqrj"), ExtResource("4_78s2b"), ExtResource("5_ymvbw"), ExtResource("6_k7aw5"), ExtResource("7_exby2")])
 
 [node name="UI" parent="." instance=ExtResource("5_0ek2r")]
 
@@ -34,6 +41,7 @@ position_smoothing_enabled = true
 process_mode = 3
 script = ExtResource("3_km3i2")
 range_spawn = 2200
+asteroids = Array[PackedScene]([ExtResource("3_4mqrj"), ExtResource("4_78s2b"), ExtResource("5_ymvbw"), ExtResource("6_k7aw5"), ExtResource("7_exby2"), ExtResource("2_njqro")])
 
 [node name="DeleteObjectBound" type="Area2D" parent="Astronot"]
 process_mode = 3
