@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b808r6tofjsiv"]
+
+[ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://scenes/entity/astronot/astronot.tscn" id="1_458hi"]
+[ext_resource type="PackedScene" uid="uid://c0qgguxhpl3lw" path="res://scenes/entity/oxygen/oxygen_tank.tscn" id="2_jk6ml"]
+
+[node name="test" type="Node2D"]
+
+[node name="Astronot" parent="." instance=ExtResource("1_458hi")]
+position = Vector2(472, 252)
+
+[node name="OxygenTank" parent="." instance=ExtResource("2_jk6ml")]
+position = Vector2(666, 284)
+linear_velocity = Vector2(-1.14, 0)
