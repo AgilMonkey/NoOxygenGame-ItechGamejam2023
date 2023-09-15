@@ -1,12 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://uou4ssvxdcly"]
 
+[ext_resource type="Texture2D" uid="uid://cfli7gnceuyco" path="res://assets/astronout.png" id="2_36inc"]
 [ext_resource type="Script" path="res://scenes/entity/astronot/astronot.gd" id="2_e6crm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rctnw"]
 bounce = 0.4
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bqkbg"]
-load_path = "res://.godot/imported/astronout.png-5fe79fb808ad4c8b2fd530002557ad8e.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_evu6n"]
 radius = 15.0
@@ -21,9 +19,9 @@ max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("2_e6crm")
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
-texture = SubResource("CompressedTexture2D_bqkbg")
+texture = ExtResource("2_36inc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_evu6n")

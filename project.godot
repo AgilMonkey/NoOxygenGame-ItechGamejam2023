@@ -21,8 +21,8 @@ GlobalManager="*res://scenes/manager/global_manager.gd"
 
 [display]
 
-window/size/viewport_width=1270
-window/size/viewport_height=720
+window/size/viewport_width=970
+window/size/viewport_height=520
 
 [input]
 
@@ -55,4 +55,4 @@ move_left={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
