@@ -22,6 +22,8 @@ signal on_health_changed(cur_health: int)
 signal on_oxygen_changed(cur_oxygen: int)
 signal on_death
 
+@onready var hurt_timer := $HurtTimer
+
 
 func _ready() -> void:
 	on_health_changed.emit(health) # Dianu biar ui berubah
@@ -54,9 +56,12 @@ func _physics_process(delta: float) -> void:
 
 
 func damage(amount: int):
+	if not hurt_timer.is_stopped():
+		return
 	health -= amount
 	health = clamp(health, 0, 10)
 	on_health_changed.emit(health)
+	hurt_timer.start()
 
 
 func reduce_oxygen(amount: int):
