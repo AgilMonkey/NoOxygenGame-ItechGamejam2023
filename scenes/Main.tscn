@@ -21,18 +21,22 @@ radius = 2300.0
 [node name="GameUI" parent="UI" instance=ExtResource("5_0aigo")]
 
 [node name="GameoverUI" parent="UI" instance=ExtResource("4_iytu8")]
+visible = false
 
 [node name="Astronot" parent="." instance=ExtResource("3_5ol35")]
 position = Vector2(446, 353)
 
 [node name="Camera2D" type="Camera2D" parent="Astronot"]
+process_mode = 3
 position_smoothing_enabled = true
 
 [node name="SpawnAround" type="Node2D" parent="Astronot"]
+process_mode = 3
 script = ExtResource("3_km3i2")
 range_spawn = 2200
 
 [node name="DeleteObjectBound" type="Area2D" parent="Astronot"]
+process_mode = 3
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("4_olaxs")
@@ -47,6 +51,8 @@ position = Vector2(948, 502)
 [node name="OxygenTank2" parent="." instance=ExtResource("7_0lmgl")]
 position = Vector2(120, 443)
 
+[connection signal="on_death" from="Astronot" to="UI/GameUI" method="_on_astronot_on_death"]
+[connection signal="on_death" from="Astronot" to="UI/GameoverUI" method="_on_astronot_on_death"]
 [connection signal="on_health_changed" from="Astronot" to="UI/GameUI" method="_on_astronot_on_health_changed"]
 [connection signal="on_oxygen_changed" from="Astronot" to="UI/GameUI" method="_on_astronot_on_oxygen_changed"]
 [connection signal="body_exited" from="Astronot/DeleteObjectBound" to="Astronot/DeleteObjectBound" method="_on_body_exited"]

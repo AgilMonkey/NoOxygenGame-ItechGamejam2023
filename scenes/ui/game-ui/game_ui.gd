@@ -9,3 +9,7 @@ func _on_astronot_on_health_changed(cur_health) -> void:
 
 func _on_astronot_on_oxygen_changed(cur_oxygen) -> void:
 	oxygen_ui.text = "Oxygen: " + str(cur_oxygen)
+
+
+func _on_astronot_on_death() -> void:
+	visible = false

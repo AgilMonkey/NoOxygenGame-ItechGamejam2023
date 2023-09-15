@@ -33,14 +33,15 @@ func _process(delta: float) -> void:
 		_death()
 
 
-func _physics_process(delta: float) -> void:
-	# Input
+func _input(event: InputEvent) -> void:
 	_input_dir.y = Input.get_action_raw_strength("move_back") - Input.get_action_raw_strength("move_forward")
 	_rot_dir = 0
 	if Input.is_action_pressed("move_right"):
 		_rot_dir += 1
 	if Input.is_action_pressed("move_left"):
 		_rot_dir -= 1
+
+func _physics_process(delta: float) -> void:
 
 	# Physics
 	if _input_dir.length_squared() > 0:
@@ -66,6 +67,9 @@ func reduce_oxygen(amount: int):
 
 func _death():
 	is_death = true
+	_input_dir = Vector2.ZERO
+	_rot_dir = 0
+	set_process_input(false)
 	on_death.emit()
 
 
