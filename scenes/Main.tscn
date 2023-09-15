@@ -26,6 +26,8 @@ script = ExtResource("4_dmxju")
 range_spawn = 2200
 asteroid_spawn_count = 12
 
+[node name="DeleteObjectBound" type="Area2D" parent="Astronot"]
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="GameUI" type="Control" parent="UI"]
@@ -70,5 +72,6 @@ position = Vector2(948, 502)
 [node name="OxygenTank2" parent="." instance=ExtResource("7_0lmgl")]
 position = Vector2(120, 443)
 
+[connection signal="on_death" from="Astronot" to="SpawnManager" method="_on_astronot_on_death"]
 [connection signal="on_health_changed" from="Astronot" to="UI/GameUI/HealthUI" method="_on_astronot_on_health_changed"]
 [connection signal="on_oxygen_changed" from="Astronot" to="UI/GameUI/OxygenUI" method="_on_astronot_on_oxygen_changed"]
