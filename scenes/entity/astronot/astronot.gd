@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var health := 10
 @export var oxygen := 200
 
-@export var oxygen_replenish := 65
+@export var oxygen_replenish := 50
 
 # Movement var
 var speed := 300.0
