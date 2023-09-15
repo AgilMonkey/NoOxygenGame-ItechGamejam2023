@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3ex6cnoi4jt4"]
+[gd_scene load_steps=17 format=3 uid="uid://c3ex6cnoi4jt4"]
 
 [ext_resource type="PackedScene" uid="uid://ypipf57o2bjx" path="res://scenes/manager/spawn_manager.tscn" id="1_73e2h"]
+[ext_resource type="PackedScene" uid="uid://ccpbr6cqbw8pv" path="res://scenes/manager/game_manager.tscn" id="1_cpnfk"]
 [ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://scenes/entity/asteroid/asteroid.tscn" id="2_njqro"]
 [ext_resource type="PackedScene" uid="uid://dcbqsyecyve4g" path="res://scenes/entity/asteroid/asteroid1.tscn" id="3_4mqrj"]
 [ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://scenes/entity/astronot/astronot.tscn" id="3_5ol35"]
@@ -19,6 +20,8 @@
 radius = 2300.0
 
 [node name="Main" type="Node2D"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_cpnfk")]
 
 [node name="SpawnManager" parent="." instance=ExtResource("1_73e2h")]
 asteroids = Array[PackedScene]([ExtResource("2_njqro"), ExtResource("3_4mqrj"), ExtResource("4_78s2b"), ExtResource("5_ymvbw"), ExtResource("6_k7aw5"), ExtResource("7_exby2")])
@@ -57,6 +60,7 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 position = Vector2(871, 470)
 rotation = -0.927385
 
+[connection signal="on_score_changed" from="GameManager" to="UI/GameUI" method="_on_game_manager_on_score_changed"]
 [connection signal="on_death" from="Astronot" to="UI/GameUI" method="_on_astronot_on_death"]
 [connection signal="on_death" from="Astronot" to="UI/GameoverUI" method="_on_astronot_on_death"]
 [connection signal="on_health_changed" from="Astronot" to="UI/GameUI" method="_on_astronot_on_health_changed"]
