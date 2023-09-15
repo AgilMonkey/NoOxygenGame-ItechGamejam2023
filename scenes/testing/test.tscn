@@ -1,0 +1,13 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfl0ufjv3eifb"]
+
+[ext_resource type="Script" path="res://scenes/testing/test.gd" id="1_bj1px"]
+[ext_resource type="PackedScene" uid="uid://dcbqsyecyve4g" path="res://scenes/entity/asteroid/asteroid1.tscn" id="2_vksbm"]
+[ext_resource type="PackedScene" uid="uid://c23276uhylacb" path="res://scenes/entity/asteroid/asteroid2.tscn" id="3_sdgug"]
+[ext_resource type="PackedScene" uid="uid://ik0vrpiq0wx1" path="res://scenes/entity/asteroid/asteroid3.tscn" id="4_b6ib8"]
+[ext_resource type="PackedScene" uid="uid://d1kg5dnsvwgxa" path="res://scenes/entity/asteroid/asteroid4.tscn" id="5_hiyal"]
+[ext_resource type="PackedScene" uid="uid://d0ex5i5l2o24g" path="res://scenes/entity/asteroid/asteroid5.tscn" id="6_wxpwf"]
+[ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://scenes/entity/asteroid/asteroid.tscn" id="7_6tx4c"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_bj1px")
+ta = Array[PackedScene]([ExtResource("2_vksbm"), ExtResource("3_sdgug"), ExtResource("4_b6ib8"), ExtResource("5_hiyal"), ExtResource("6_wxpwf"), ExtResource("7_6tx4c")])
