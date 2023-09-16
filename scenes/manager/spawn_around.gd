@@ -7,7 +7,7 @@ extends Node2D
 var _last_pos : Vector2
 
 @export var asteroids : Array[PackedScene]
-var oxygen_tank : PackedScene = preload("res://scenes/entity/oxygen/oxygen_tank.tscn")
+var oxygen_tank : PackedScene = load("res://scenes/entity/oxygen/oxygen_tank.tscn")
 
 
 func _ready() -> void:

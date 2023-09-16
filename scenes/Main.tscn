@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c3ex6cnoi4jt4"]
+[gd_scene load_steps=22 format=3 uid="uid://c3ex6cnoi4jt4"]
 
 [ext_resource type="PackedScene" uid="uid://ypipf57o2bjx" path="res://scenes/manager/spawn_manager.tscn" id="1_73e2h"]
 [ext_resource type="PackedScene" uid="uid://ccpbr6cqbw8pv" path="res://scenes/manager/game_manager.tscn" id="1_cpnfk"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://c0qgguxhpl3lw" path="res://scenes/entity/oxygen/oxygen_tank.tscn" id="7_0lmgl"]
 [ext_resource type="PackedScene" uid="uid://d0ex5i5l2o24g" path="res://scenes/entity/asteroid/asteroid5.tscn" id="7_exby2"]
 [ext_resource type="Texture2D" uid="uid://bfhs23py5fovt" path="res://assets/background-space.png" id="12_syadn"]
+[ext_resource type="AudioStream" uid="uid://c8miijx3b4q5f" path="res://assets/main-theme.ogg" id="17_vtnxc"]
+[ext_resource type="Script" path="res://scenes/manager/MainTheme.gd" id="18_i7x0x"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fb4ft"]
 load_path = "res://.godot/imported/tile000.png-b260a43711045c0a2c8eeec9bc210c42.ctex"
@@ -90,6 +92,10 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="OxygenTank" parent="." instance=ExtResource("7_0lmgl")]
 position = Vector2(871, 470)
 rotation = -0.927385
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_vtnxc")
+script = ExtResource("18_i7x0x")
 
 [connection signal="on_score_changed" from="GameManager" to="UI/GameUI" method="_on_game_manager_on_score_changed"]
 [connection signal="on_score_changed" from="GameManager" to="UI/GameoverUI" method="_on_game_manager_on_score_changed"]

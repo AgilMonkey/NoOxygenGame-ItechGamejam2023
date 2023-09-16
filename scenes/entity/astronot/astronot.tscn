@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://uou4ssvxdcly"]
+[gd_scene load_steps=7 format=3 uid="uid://uou4ssvxdcly"]
 
 [ext_resource type="Texture2D" uid="uid://cfli7gnceuyco" path="res://assets/astronout.png" id="2_36inc"]
 [ext_resource type="Script" path="res://scenes/entity/astronot/astronot.gd" id="2_e6crm"]
+[ext_resource type="AudioStream" uid="uid://e5rgtnkpg0yv" path="res://assets/Checkpoint-01.wav" id="3_ltiag"]
+[ext_resource type="AudioStream" uid="uid://bk0132ub3veqx" path="res://assets/Thud01Aud.wav" id="4_tw8xo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rctnw"]
 bounce = 0.4
@@ -36,6 +38,13 @@ wait_time = 2.0
 [node name="HurtTimer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[node name="OxygenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ltiag")
+volume_db = 2.0
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tw8xo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="OxygenTimer" to="." method="_on_oxygen_timer_timeout"]

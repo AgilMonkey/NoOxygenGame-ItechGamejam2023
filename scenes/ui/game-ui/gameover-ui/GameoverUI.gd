@@ -1,7 +1,7 @@
 extends Control
 
 
-@onready var menu_scene : PackedScene = preload("res://scenes/ui/menu.tscn")
+@onready var menu_scene : PackedScene = load("res://scenes/ui/menu.tscn")
 
 @onready var score_ui := $Score
 var cur_score := 0

@@ -8,8 +8,8 @@ extends Node2D
 @export var asteroid_spawn_count := 100
 @export var oxygen_spawn_count := 20
 
-@export var asteroids : Array[PackedScene]
-var oxygen_tank : PackedScene = preload("res://scenes/entity/oxygen/oxygen_tank.tscn")
+@export var asteroids : Array[PackedScene] = [load("res://scenes/entity/asteroid/asteroid.tscn")]
+var oxygen_tank : PackedScene = load("res://scenes/entity/oxygen/oxygen_tank.tscn")
 
 var _position_been : Array[Vector2]
 

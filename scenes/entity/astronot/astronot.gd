@@ -62,9 +62,12 @@ func damage(amount: int):
 	health = clamp(health, 0, 10)
 	on_health_changed.emit(health)
 	hurt_timer.start()
+	$HurtSound.play()
 
 
 func reduce_oxygen(amount: int):
+	if amount < 0:
+		$OxygenSound.play()
 	oxygen -= amount
 	oxygen = clamp(oxygen, 0, 200)
 	on_oxygen_changed.emit(oxygen)

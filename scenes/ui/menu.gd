@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var main_scene : PackedScene = preload("res://scenes/Main.tscn")
+var main_scene : PackedScene = load("res://scenes/Main.tscn")
 
 func _on_start_pressed():
 	get_tree().change_scene_to_packed(main_scene)
