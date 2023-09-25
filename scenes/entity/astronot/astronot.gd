@@ -56,6 +56,8 @@ func _physics_process(delta: float) -> void:
 
 
 func damage(amount: int):
+	if health - amount < 0:
+		return
 	if not hurt_timer.is_stopped():
 		return
 	health -= amount

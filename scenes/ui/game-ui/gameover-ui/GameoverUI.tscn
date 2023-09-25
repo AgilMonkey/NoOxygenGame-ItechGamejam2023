@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bht8h3lcjv700"]
+[gd_scene load_steps=5 format=3 uid="uid://bht8h3lcjv700"]
 
 [ext_resource type="Script" path="res://scenes/ui/game-ui/gameover-ui/GameoverUI.gd" id="1_vgdn7"]
+[ext_resource type="FontFile" uid="uid://dpj2nf30dnwaj" path="res://assets/joystix monospace.otf" id="2_nswlv"]
+[ext_resource type="Theme" uid="uid://ck66tceohlm00" path="res://scenes/ui/main_theme.tres" id="3_noatr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_doivx"]
 font_size = 40
@@ -36,6 +38,7 @@ offset_right = 83.5
 offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_nswlv")
 text = "You died"
 label_settings = SubResource("LabelSettings_doivx")
 
@@ -52,7 +55,8 @@ offset_right = -94.0
 offset_bottom = 90.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_nswlv")
+theme_override_font_sizes/font_size = 25
 text = "Score
 0
 Highscore
@@ -72,6 +76,7 @@ offset_right = 70.0
 offset_bottom = -161.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("3_noatr")
 text = "Restart"
 
 [node name="ExitButton" type="Button" parent="."]
@@ -87,6 +92,7 @@ offset_right = 66.0
 offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("3_noatr")
 text = "Exit"
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

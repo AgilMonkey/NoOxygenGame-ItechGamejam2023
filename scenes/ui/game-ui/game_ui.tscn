@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0bu6m3ljp4i3"]
+[gd_scene load_steps=5 format=3 uid="uid://d0bu6m3ljp4i3"]
 
 [ext_resource type="Script" path="res://scenes/ui/game-ui/game_ui.gd" id="1_afk02"]
 [ext_resource type="FontFile" uid="uid://dpj2nf30dnwaj" path="res://assets/joystix monospace.otf" id="2_svsct"]
+[ext_resource type="PackedScene" uid="uid://b61qeh08tk1jf" path="res://scenes/ui/game-ui/bar/health_bar.tscn" id="3_x1ar3"]
+[ext_resource type="PackedScene" uid="uid://xwshcekt5jra" path="res://scenes/ui/game-ui/bar/oxygen_bar.tscn" id="4_2bvfe"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -11,48 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_afk02")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -166.0
-offset_right = 333.0
-offset_bottom = -20.0
-grow_vertical = 0
-color = Color(0.141176, 0.141176, 0.141176, 0.631373)
-
-[node name="HealthUI" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -151.0
-offset_right = 306.0
-offset_bottom = -79.0
-grow_vertical = 0
-theme_override_colors/font_color = Color(1, 0.12549, 0.0862745, 1)
-theme_override_fonts/font = ExtResource("2_svsct")
-theme_override_font_sizes/font_size = 32
-text = "Health: 10"
-
-[node name="OxygenUI" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -101.0
-offset_right = 317.0
-offset_bottom = -29.0
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0.690196, 0.639216, 1)
-theme_override_fonts/font = ExtResource("2_svsct")
-theme_override_font_sizes/font_size = 32
-text = "Oxygen: 200"
 
 [node name="ScoreUI" type="Label" parent="."]
 layout_mode = 1
@@ -69,3 +29,37 @@ theme_override_font_sizes/font_size = 40
 text = "SCORE
 0"
 horizontal_alignment = 1
+
+[node name="Bars" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -124.0
+offset_right = 305.0
+offset_bottom = -20.0
+grow_vertical = 0
+color = Color(0.141176, 0.141176, 0.141176, 0.631373)
+
+[node name="HealthBar" parent="Bars" instance=ExtResource("3_x1ar3")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = -43.0
+offset_right = 276.0
+offset_bottom = -4.0
+grow_vertical = 2
+
+[node name="OxygenBar" parent="Bars" instance=ExtResource("4_2bvfe")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 5.0
+offset_right = 276.0
+offset_bottom = 44.0
+grow_vertical = 2
