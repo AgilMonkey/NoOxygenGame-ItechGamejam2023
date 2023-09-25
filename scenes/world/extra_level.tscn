@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://cxg44o2gqxx8s"]
+[gd_scene load_steps=2 format=3 uid="uid://cxg44o2gqxx8s"]
+
+[ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://scenes/entity/astronot/astronot.tscn" id="1_6nfyk"]
 
 [node name="extra_level" type="Node2D"]
+
+[node name="Astronot" parent="." instance=ExtResource("1_6nfyk")]
