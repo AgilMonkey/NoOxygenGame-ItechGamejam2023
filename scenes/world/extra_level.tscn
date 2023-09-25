@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxg44o2gqxx8s"]
+[gd_scene load_steps=7 format=3 uid="uid://cxg44o2gqxx8s"]
 
 [ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://scenes/entity/astronot/astronot.tscn" id="1_6nfyk"]
 [ext_resource type="PackedScene" uid="uid://bdt5qlrcrt77s" path="res://scenes/ui/ui.tscn" id="2_wec2u"]
 [ext_resource type="PackedScene" uid="uid://b61qeh08tk1jf" path="res://scenes/ui/game-ui/bar/health_bar.tscn" id="3_iq7ys"]
+[ext_resource type="AudioStream" uid="uid://cnnkm6mj0klus" path="res://assets/himne-putri-yang-mencintai-semuanya-loop.ogg" id="4_w7br8"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_x3m81"]
 
@@ -127,3 +128,5 @@ shape = SubResource("RectangleShape2D_rjaph")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_w7br8")
+autoplay = true
