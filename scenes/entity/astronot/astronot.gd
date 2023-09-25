@@ -16,6 +16,7 @@ var _input_dir := Vector2.ZERO
 var _rot_dir := 0
 
 # Others
+@export var is_breathing := true
 var is_death := false
 
 signal on_health_changed(cur_health: int)
@@ -99,5 +100,7 @@ func _on_oxygen_timer_timeout() -> void:
 
 
 func _on_out_of_oxygen_timer_timeout() -> void:
+	if not is_breathing:
+		return
 	if oxygen <= 0:
 		damage(1)

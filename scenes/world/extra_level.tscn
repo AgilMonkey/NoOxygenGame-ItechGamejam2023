@@ -1,7 +1,129 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxg44o2gqxx8s"]
+[gd_scene load_steps=6 format=3 uid="uid://cxg44o2gqxx8s"]
 
 [ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://scenes/entity/astronot/astronot.tscn" id="1_6nfyk"]
+[ext_resource type="PackedScene" uid="uid://bdt5qlrcrt77s" path="res://scenes/ui/ui.tscn" id="2_wec2u"]
+[ext_resource type="PackedScene" uid="uid://b61qeh08tk1jf" path="res://scenes/ui/game-ui/bar/health_bar.tscn" id="3_iq7ys"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_x3m81"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjaph"]
+size = Vector2(128, 128)
 
 [node name="extra_level" type="Node2D"]
 
 [node name="Astronot" parent="." instance=ExtResource("1_6nfyk")]
+is_breathing = false
+
+[node name="Camera2D" type="Camera2D" parent="Astronot"]
+zoom = Vector2(0.6, 0.6)
+
+[node name="UI" parent="." instance=ExtResource("2_wec2u")]
+
+[node name="GameUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" parent="UI/GameUI" instance=ExtResource("3_iq7ys")]
+layout_mode = 1
+offset_left = 10.0
+offset_top = -46.0
+offset_right = 286.0
+offset_bottom = -7.0
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="Level"]
+position = Vector2(-1152, 384)
+scale = Vector2(13.5271, -13.2357)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0.00784314)
+
+[node name="Wall2" type="StaticBody2D" parent="Level"]
+position = Vector2(-96, 1152)
+scale = Vector2(16.1611, 13.2421)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall2"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall2"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Wall3" type="StaticBody2D" parent="Level"]
+position = Vector2(1664, 608)
+scale = Vector2(21.2399, 16.8281)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall3"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall3"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Wall4" type="StaticBody2D" parent="Level"]
+position = Vector2(2784, -928)
+scale = Vector2(21.2399, 38.2681)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall4"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall4"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Wall5" type="StaticBody2D" parent="Level"]
+position = Vector2(-2624, -992)
+scale = Vector2(21.2399, 31.7881)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall5"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall5"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Wall6" type="StaticBody2D" parent="Level"]
+position = Vector2(608, -2784)
+scale = Vector2(43.093, 17.2197)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall6"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall6"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
