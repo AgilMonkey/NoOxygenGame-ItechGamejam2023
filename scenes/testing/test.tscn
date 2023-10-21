@@ -9,5 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cd8y4ij1ee2ol" path="res://scenes/entity/asteroid/asteroid.tscn" id="7_6tx4c"]
 
 [node name="Node2D" type="Node2D"]
+visible = false
 script = ExtResource("1_bj1px")
 ta = Array[PackedScene]([ExtResource("2_vksbm"), ExtResource("3_sdgug"), ExtResource("4_b6ib8"), ExtResource("5_hiyal"), ExtResource("6_wxpwf"), ExtResource("7_6tx4c")])

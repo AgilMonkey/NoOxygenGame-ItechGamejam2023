@@ -17,6 +17,7 @@ var _rot_dir := 0
 
 # Others
 @export var is_breathing := true
+@export var is_moving := true
 var is_death := false
 
 signal on_health_changed(cur_health: int)
@@ -45,7 +46,9 @@ func _input(event: InputEvent) -> void:
 		_rot_dir -= 1
 
 func _physics_process(delta: float) -> void:
-
+	if not is_moving:
+		return
+	
 	# Physics
 	if _input_dir.length_squared() > 0:
 		apply_force(Vector2(0, _input_dir.y * speed).rotated(rotation))
@@ -104,3 +107,19 @@ func _on_out_of_oxygen_timer_timeout() -> void:
 		return
 	if oxygen <= 0:
 		damage(1)
+
+
+func _on_dialogue_started() -> void:
+	is_moving = false
+	linear_damp = 5
+	angular_damp = 5
+
+
+func _on_dialogue_ended() -> void:
+	is_moving = true
+	linear_damp = 0
+	angular_damp = 0
+
+
+func _on_hitbox_area_entered(_area: Area2D) -> void:
+	damage(1)

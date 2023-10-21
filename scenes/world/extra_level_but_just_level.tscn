@@ -1,0 +1,233 @@
+[gd_scene load_steps=13 format=3 uid="uid://drdn3imo63vnn"]
+
+[ext_resource type="Script" path="res://scenes/manager/extra_level.gd" id="1_tob5m"]
+[ext_resource type="Script" path="res://scenes/entity/Camera/GameCamera.gd" id="2_uymid"]
+[ext_resource type="PackedScene" uid="uid://bdt5qlrcrt77s" path="res://scenes/ui/ui.tscn" id="3_k6msw"]
+[ext_resource type="Script" path="res://scenes/ui/game-ui/game_ui.gd" id="4_4q6pa"]
+[ext_resource type="PackedScene" uid="uid://b61qeh08tk1jf" path="res://scenes/ui/game-ui/bar/health_bar.tscn" id="5_x1t10"]
+[ext_resource type="Script" path="res://scenes/ui/game-ui/dialogue-ui/dialogue_ui.gd" id="6_xyo51"]
+[ext_resource type="Texture2D" uid="uid://cfli7gnceuyco" path="res://assets/astronout.png" id="7_1eoar"]
+[ext_resource type="Texture2D" uid="uid://dkgpe45fwmlug" path="res://assets/witch-scorpion-Sheet.png" id="8_hvew5"]
+[ext_resource type="Theme" uid="uid://ck66tceohlm00" path="res://scenes/ui/main_theme.tres" id="9_gu2ys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo6d1"]
+atlas = ExtResource("8_hvew5")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_x3m81"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjaph"]
+size = Vector2(128, 128)
+
+[node name="extra_level" type="Node2D"]
+script = ExtResource("1_tob5m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(40, -912)
+zoom = Vector2(0.2, 0.2)
+position_smoothing_enabled = true
+position_smoothing_speed = 50.0
+script = ExtResource("2_uymid")
+lerp_speed = 15.0
+
+[node name="UI" parent="." instance=ExtResource("3_k6msw")]
+
+[node name="GameUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_4q6pa")
+
+[node name="Bars" type="Control" parent="UI/GameUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" parent="UI/GameUI/Bars" instance=ExtResource("5_x1t10")]
+layout_mode = 1
+offset_left = 10.0
+offset_top = -46.0
+offset_right = 286.0
+offset_bottom = -7.0
+
+[node name="DialogueUI" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_xyo51")
+
+[node name="Character1" type="TextureRect" parent="UI/DialogueUI"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 136.0
+offset_right = 352.0
+offset_bottom = 528.0
+texture = ExtResource("7_1eoar")
+
+[node name="Character2" type="TextureRect" parent="UI/DialogueUI"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 112.0
+offset_right = 1056.0
+offset_bottom = 672.0
+texture = SubResource("AtlasTexture_qo6d1")
+flip_h = true
+
+[node name="Box" type="ColorRect" parent="UI/DialogueUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -325.0
+offset_top = -136.0
+offset_right = 325.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.168627, 0.168627, 0.168627, 1)
+
+[node name="DialogueText" type="Label" parent="UI/DialogueUI/Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_gu2ys")
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ollit anim id est laborum."
+autowrap_mode = 3
+
+[node name="Name" type="Label" parent="UI/DialogueUI"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 376.0
+offset_right = 392.0
+offset_bottom = 399.0
+theme = ExtResource("9_gu2ys")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 16
+text = "Mei surakawa"
+
+[node name="LetterTimer" type="Timer" parent="UI/DialogueUI"]
+wait_time = 0.02
+one_shot = true
+
+[node name="Level" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Wall" type="StaticBody2D" parent="Level"]
+position = Vector2(-1152, 384)
+scale = Vector2(13.5271, -13.2357)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall"]
+modulate = Color(0, 0, 0, 1)
+z_index = 20
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0.00784314)
+
+[node name="Wall2" type="StaticBody2D" parent="Level"]
+position = Vector2(-96, 1152)
+scale = Vector2(16.1611, 13.2421)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall2"]
+modulate = Color(0, 0, 0, 1)
+z_index = 20
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall2"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Wall3" type="StaticBody2D" parent="Level"]
+position = Vector2(1648, 616)
+scale = Vector2(21.2399, 16.8281)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall3"]
+modulate = Color(0, 0, 0, 1)
+z_index = 20
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall3"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Wall4" type="StaticBody2D" parent="Level"]
+position = Vector2(2784, -928)
+scale = Vector2(21.2399, 38.2681)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall4"]
+modulate = Color(0, 0, 0, 1)
+z_index = 20
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall4"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Wall5" type="StaticBody2D" parent="Level"]
+position = Vector2(-2624, -992)
+scale = Vector2(21.2399, 31.7881)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall5"]
+modulate = Color(0, 0, 0, 1)
+z_index = 20
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall5"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Wall6" type="StaticBody2D" parent="Level"]
+position = Vector2(608, -2784)
+scale = Vector2(43.093, 17.2197)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Wall6"]
+modulate = Color(0, 0, 0, 1)
+z_index = 20
+scale = Vector2(128, 128)
+texture = SubResource("CanvasTexture_x3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall6"]
+shape = SubResource("RectangleShape2D_rjaph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[connection signal="timeout" from="UI/DialogueUI/LetterTimer" to="UI/DialogueUI" method="_on_letter_timer_timeout"]

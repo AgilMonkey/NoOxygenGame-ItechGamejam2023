@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgiy7cb8ts76s"]
+
+[ext_resource type="Script" path="res://scenes/world/extra/bullet_patterns/pattern3.gd" id="1_twbxs"]
+[ext_resource type="AudioStream" uid="uid://beeuu76ek2s22" path="res://scenes/entity/bullets/danmaku-bullet.wav" id="2_q6h77"]
+
+[node name="pattern3" type="Node2D"]
+script = ExtResource("1_twbxs")
+rot_speed = 20.0
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="bulletSpawn" type="Node2D" parent="."]
+
+[node name="BulletSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_q6h77")
+
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]

@@ -1,22 +1,269 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxg44o2gqxx8s"]
+[gd_scene load_steps=42 format=3 uid="uid://cxg44o2gqxx8s"]
 
 [ext_resource type="PackedScene" uid="uid://uou4ssvxdcly" path="res://scenes/entity/astronot/astronot.tscn" id="1_6nfyk"]
+[ext_resource type="Script" path="res://scenes/manager/extra_level.gd" id="1_tuooj"]
+[ext_resource type="Script" path="res://scenes/entity/Camera/GameCamera.gd" id="2_jvxee"]
 [ext_resource type="PackedScene" uid="uid://bdt5qlrcrt77s" path="res://scenes/ui/ui.tscn" id="2_wec2u"]
 [ext_resource type="PackedScene" uid="uid://b61qeh08tk1jf" path="res://scenes/ui/game-ui/bar/health_bar.tscn" id="3_iq7ys"]
-[ext_resource type="AudioStream" uid="uid://cnnkm6mj0klus" path="res://assets/himne-putri-yang-mencintai-semuanya-loop.ogg" id="4_w7br8"]
+[ext_resource type="Script" path="res://scenes/ui/game-ui/game_ui.gd" id="5_kgwkw"]
+[ext_resource type="Theme" uid="uid://ck66tceohlm00" path="res://scenes/ui/main_theme.tres" id="5_m1s54"]
+[ext_resource type="Script" path="res://scenes/ui/game-ui/dialogue-ui/dialogue_ui.gd" id="5_q1whb"]
+[ext_resource type="Texture2D" uid="uid://cfli7gnceuyco" path="res://assets/astronout.png" id="6_vellf"]
+[ext_resource type="Texture2D" uid="uid://g16jnpd64vv2" path="res://assets/witch-scorpion-Sheet-new.png" id="8_nbhdw"]
+[ext_resource type="Script" path="res://scenes/world/extra/BossDialogue.gd" id="8_ymwya"]
+[ext_resource type="PackedScene" uid="uid://c8fsecti8wxl8" path="res://scenes/world/extra/bullet_patterns/pattern1.tscn" id="11_nkrd6"]
+[ext_resource type="PackedScene" uid="uid://d0kdq1smv48nl" path="res://scenes/world/extra/bullet_patterns/pattern2.tscn" id="12_dgob6"]
+[ext_resource type="PackedScene" uid="uid://cnlqko7yrs6ts" path="res://scenes/world/extra/boss/boss.tscn" id="12_v128n"]
+[ext_resource type="PackedScene" uid="uid://cgiy7cb8ts76s" path="res://scenes/world/extra/bullet_patterns/pattern3.tscn" id="13_6eoli"]
+[ext_resource type="AudioStream" uid="uid://dfukjjyamlr0p" path="res://assets/himne-putri-yang-mencintai-semuanya-loop.ogg" id="14_0ns87"]
+[ext_resource type="Script" path="res://scenes/entity/tutorial/tutorial.gd" id="16_5f0ou"]
+[ext_resource type="Texture2D" uid="uid://ih8lotrh4bbl" path="res://assets/tutor_left_right.png" id="17_lj1g3"]
+[ext_resource type="Texture2D" uid="uid://dts65ncpoifqp" path="res://assets/tutor_up_down.png" id="17_oxemn"]
+[ext_resource type="Texture2D" uid="uid://oyhq3flbrd4e" path="res://assets/tutor_hitbox.png" id="18_inays"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_x3m81"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjaph"]
 size = Vector2(128, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv7x0"]
+size = Vector2(1600, 768)
+
+[sub_resource type="Animation" id="Animation_n8au7"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(456, -1288)]
+}
+
+[sub_resource type="Animation" id="Animation_qf3c7"]
+resource_name = "bullet_1"
+length = 28.0
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossTheme")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("boss:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, -944), Vector2(0, -1085)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("boss/pattern1")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 27),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_iptuj"]
+resource_name = "bullet_2"
+length = 28.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 7, 10, 14, 17, 20, 22),
+"transitions": PackedFloat32Array(-2, -0.5, -2, -0.5, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0, -1085), Vector2(100, -1085), Vector2(100, -1085), Vector2(0, -1085), Vector2(0, -1085), Vector2(-200, -1085), Vector2(-200, -1085), Vector2(0, -1085)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("boss/pattern2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 27),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1xuwm"]
+resource_name = "bullet_3"
+length = 36.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1085)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("boss/pattern3")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 29),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BossDialogue")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(36),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"final_dialouge"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xcgva"]
+resource_name = "flew_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(456, -1288), Vector2(0, -944)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2p2kn"]
+_data = {
+"RESET": SubResource("Animation_n8au7"),
+"bullet_1": SubResource("Animation_qf3c7"),
+"bullet_2": SubResource("Animation_iptuj"),
+"bullet_3": SubResource("Animation_1xuwm"),
+"flew_in": SubResource("Animation_xcgva")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7m4rf"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gfha4"]
+animation = &"bullet_1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_176rq"]
+animation = &"bullet_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5wkd0"]
+animation = &"bullet_3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ytujp"]
+animation = &"flew_in"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dtbus"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vbpxx"]
+advance_mode = 2
+advance_condition = &"start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aixwr"]
+advance_mode = 2
+advance_condition = &"start_battle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tcjod"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cfo3s"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_156vt"]
+switch_mode = 2
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_urmgi"]
+states/End/position = Vector2(1150.67, 82.16)
+states/RESET/node = SubResource("AnimationNodeAnimation_7m4rf")
+states/RESET/position = Vector2(425.333, 97.6543)
+states/Start/position = Vector2(290.666, 98.0608)
+states/bullet_1/node = SubResource("AnimationNodeAnimation_gfha4")
+states/bullet_1/position = Vector2(706.667, 100.697)
+states/bullet_2/node = SubResource("AnimationNodeAnimation_176rq")
+states/bullet_2/position = Vector2(841.333, 93.0008)
+states/bullet_3/node = SubResource("AnimationNodeAnimation_5wkd0")
+states/bullet_3/position = Vector2(1014.4, 80.614)
+states/flew_in/node = SubResource("AnimationNodeAnimation_ytujp")
+states/flew_in/position = Vector2(566.667, 99.1066)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_dtbus"), "RESET", "flew_in", SubResource("AnimationNodeStateMachineTransition_vbpxx"), "flew_in", "bullet_1", SubResource("AnimationNodeStateMachineTransition_aixwr"), "bullet_1", "bullet_2", SubResource("AnimationNodeStateMachineTransition_tcjod"), "bullet_2", "bullet_3", SubResource("AnimationNodeStateMachineTransition_cfo3s"), "bullet_3", "End", SubResource("AnimationNodeStateMachineTransition_156vt")]
+graph_offset = Vector2(90.3995, 0)
+
 [node name="extra_level" type="Node2D"]
+script = ExtResource("1_tuooj")
 
-[node name="Astronot" parent="." instance=ExtResource("1_6nfyk")]
-is_breathing = false
-
-[node name="Camera2D" type="Camera2D" parent="Astronot"]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 50.0
+script = ExtResource("2_jvxee")
+lerp_speed = 15.0
+target = NodePath("../Astronot")
 
 [node name="UI" parent="." instance=ExtResource("2_wec2u")]
 
@@ -27,15 +274,100 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("5_kgwkw")
+metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" parent="UI/GameUI" instance=ExtResource("3_iq7ys")]
+[node name="Bars" type="Control" parent="UI/GameUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" parent="UI/GameUI/Bars" instance=ExtResource("3_iq7ys")]
 layout_mode = 1
 offset_left = 10.0
 offset_top = -46.0
 offset_right = 286.0
 offset_bottom = -7.0
 
+[node name="DialogueUI" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_q1whb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Character1" type="TextureRect" parent="UI/DialogueUI"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 136.0
+offset_right = 352.0
+offset_bottom = 528.0
+texture = ExtResource("6_vellf")
+metadata/_edit_use_anchors_ = true
+
+[node name="Character2" type="Sprite2D" parent="UI/DialogueUI"]
+position = Vector2(768, 400)
+scale = Vector2(4.68531, 4.68531)
+texture = ExtResource("8_nbhdw")
+hframes = 8
+
+[node name="Box" type="ColorRect" parent="UI/DialogueUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -325.0
+offset_top = -136.0
+offset_right = 325.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.168627, 0.168627, 0.168627, 1)
+
+[node name="DialogueText" type="Label" parent="UI/DialogueUI/Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_m1s54")
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ollit anim id est laborum."
+autowrap_mode = 3
+
+[node name="Name" type="Label" parent="UI/DialogueUI"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 376.0
+offset_right = 392.0
+offset_bottom = 399.0
+theme = ExtResource("5_m1s54")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 16
+text = "Mei surakawa"
+
+[node name="LetterTimer" type="Timer" parent="UI/DialogueUI"]
+wait_time = 0.02
+one_shot = true
+
 [node name="Level" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Wall" type="StaticBody2D" parent="Level"]
 position = Vector2(-1152, 384)
@@ -45,6 +377,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Wall"]
 modulate = Color(0, 0, 0, 1)
+z_index = 20
 scale = Vector2(128, 128)
 texture = SubResource("CanvasTexture_x3m81")
 
@@ -60,6 +393,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Wall2"]
 modulate = Color(0, 0, 0, 1)
+z_index = 20
 scale = Vector2(128, 128)
 texture = SubResource("CanvasTexture_x3m81")
 
@@ -68,13 +402,14 @@ shape = SubResource("RectangleShape2D_rjaph")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Wall3" type="StaticBody2D" parent="Level"]
-position = Vector2(1664, 608)
+position = Vector2(1648, 616)
 scale = Vector2(21.2399, 16.8281)
 collision_mask = 7
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Wall3"]
 modulate = Color(0, 0, 0, 1)
+z_index = 20
 scale = Vector2(128, 128)
 texture = SubResource("CanvasTexture_x3m81")
 
@@ -90,6 +425,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Wall4"]
 modulate = Color(0, 0, 0, 1)
+z_index = 20
 scale = Vector2(128, 128)
 texture = SubResource("CanvasTexture_x3m81")
 
@@ -105,6 +441,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Wall5"]
 modulate = Color(0, 0, 0, 1)
+z_index = 20
 scale = Vector2(128, 128)
 texture = SubResource("CanvasTexture_x3m81")
 
@@ -120,6 +457,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Wall6"]
 modulate = Color(0, 0, 0, 1)
+z_index = 20
 scale = Vector2(128, 128)
 texture = SubResource("CanvasTexture_x3m81")
 
@@ -127,6 +465,82 @@ texture = SubResource("CanvasTexture_x3m81")
 shape = SubResource("RectangleShape2D_rjaph")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_w7br8")
-autoplay = true
+[node name="TriggerBoss" type="Area2D" parent="."]
+position = Vector2(64, -864)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerBoss"]
+shape = SubResource("RectangleShape2D_wv7x0")
+
+[node name="boss" parent="." instance=ExtResource("12_v128n")]
+position = Vector2(456, -1288)
+
+[node name="pattern1" parent="boss" instance=ExtResource("11_nkrd6")]
+
+[node name="pattern2" parent="boss" instance=ExtResource("12_dgob6")]
+
+[node name="pattern3" parent="boss" instance=ExtResource("13_6eoli")]
+
+[node name="BulletContainer" type="Node2D" parent="."]
+
+[node name="BossAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2p2kn")
+}
+
+[node name="BossStateTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_urmgi")
+anim_player = NodePath("../BossAnimation")
+active = true
+parameters/conditions/start = false
+parameters/conditions/start_battle = false
+
+[node name="BossDialogue" type="Node" parent="." node_paths=PackedStringArray("boss_cam_pos")]
+script = ExtResource("8_ymwya")
+dialogue = Array[String](["Ha! Befuddled, aye?", "It is I, Sintia Jaga, the maiden whom the universe doth cherish above all else! And behold, thou, my friend, art ensnared here to serve as mine amusement.", "Oh my god,  you are older than a dinosaurs.", "Would you kindly let me out ?", "Certainly, but only on a sole condition", "Thou shalt complete the trial I have imposed, and upon thy success, I shall bestow upon thee thy freedom.", "...can't i say no ?", "Nope!"])
+final_dialogue = Array[String](["Thou somehow evaded all mine sorceries", "What sorceries ?", "...", "Indeed, since thou hast triumphed in my trial, I suppose I shall grant thee thy freedom", "Mucho thankies", "...please abstain from returning, if you would be so kind.", "I'll bring snacks later."])
+grayed_col = Color(0.435192, 0.435192, 0.435192, 1)
+boss_cam_pos = NodePath("../BossCamPos")
+
+[node name="BossCamPos" type="Marker2D" parent="."]
+position = Vector2(0, -768)
+gizmo_extents = 30.0
+
+[node name="Astronot" parent="." instance=ExtResource("1_6nfyk")]
+is_breathing = false
+
+[node name="Tutorial" type="Node2D" parent="."]
+script = ExtResource("16_5f0ou")
+
+[node name="TutorUpDown" type="Sprite2D" parent="Tutorial"]
+z_index = 100
+position = Vector2(-560, 144)
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("17_oxemn")
+
+[node name="TutorLeftRight" type="Sprite2D" parent="Tutorial"]
+z_index = 100
+position = Vector2(560, 136)
+scale = Vector2(0.450018, 0.450018)
+texture = ExtResource("17_lj1g3")
+
+[node name="TutorHitbox" type="Sprite2D" parent="Tutorial"]
+z_index = 100
+position = Vector2(456, -224)
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("18_inays")
+
+[node name="BossTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_0ns87")
+
+[connection signal="timeout" from="UI/DialogueUI/LetterTimer" to="UI/DialogueUI" method="_on_letter_timer_timeout"]
+[connection signal="body_entered" from="TriggerBoss" to="." method="_on_trigger_boss_body_entered"]
+[connection signal="body_entered" from="TriggerBoss" to="Tutorial" method="stop_tutor"]
+[connection signal="dialogue_ended" from="BossDialogue" to="Astronot" method="_on_dialogue_ended"]
+[connection signal="dialogue_started" from="BossDialogue" to="Astronot" method="_on_dialogue_started"]
+[connection signal="dialogueing" from="BossDialogue" to="UI/DialogueUI" method="display_text"]
+[connection signal="game_over_dialogue" from="BossDialogue" to="." method="quit_to_menu"]
+[connection signal="on_death" from="Astronot" to="." method="_on_astronot_on_death"]
+[connection signal="on_health_changed" from="Astronot" to="UI/GameUI" method="_on_astronot_on_health_changed"]
